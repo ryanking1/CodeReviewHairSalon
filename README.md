@@ -1,6 +1,6 @@
-# Scrabble Score Calculator
+# Hair Salon App
 
-#### Creates a word puzzle from a sentence by removing vowels, February 12, 2016.
+#### Creates an app that allows adding stylists and clients, and creating linked lists between the two, February 26, 2016.
 
 #### By Michael Schennum
 
@@ -12,6 +12,7 @@ This was created as an Epicodus exercise in Behavior Driven Development, web app
 
 * Clone this repository.
 * Make sure you have Gradle and Java installed.
+* Start Psql and Postgres and connect to a database.
 * In the top level of the cloned directory, run the following command in your terminal:
 
 `gradle run`
@@ -20,13 +21,13 @@ This was created as an Epicodus exercise in Behavior Driven Development, web app
 
 ## Technologies Used
 
-Java, Spark, Junit, Velocity, Bootstrap
+Java, Spark, Junit, Velocity, Bootstrap, Postgres, Psql
 
 ### License
 
 This software is licensed under the MIT license.
 
-Copyright (c) 2016 Michael Schennum
+Copyright (c) 2016 Ryan King
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
