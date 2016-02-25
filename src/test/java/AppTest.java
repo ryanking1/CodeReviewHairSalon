@@ -25,53 +25,54 @@ public class AppTest extends FluentTest {
   @ClassRule
   public static ServerRule server = new ServerRule();
 
-//   @Test
-// public void categoryIsCreatedTest() {
-//     goTo("http://localhost:4567/");
-//     fill("#categoryName").with("Household");
-//     submit(".btn-primary");
-//     assertThat(pageSource()).contains("Household");
-// }
-//
-// @Test
-// public void taskIsCreatedTest() {
-//     goTo("http://localhost:4567/");
-//     Category myCategory = new Category("Household");
-//     myCategory.save();
-//     String categoryPath = String.format("http://localhost:4567/%d", myCategory.getId());
-//     goTo(categoryPath);
-//     assertThat(pageSource()).contains("Household");
-//     Task tasks = new Task("Mow the lawn", myCategory.getId());
-//     tasks.save();
-//     goTo(categoryPath);
-//     assertThat(pageSource()).contains("Mow the lawn");
-// }
-// @Test
-// public void categoryIsDeletedTest() {
-//   String path = "http://localhost:4567/";
-//   goTo(path);
-//   Category myCategory = new Category("Household");
-//   myCategory.save();
-//   goTo(path);
-//   myCategory.deleteCategory(myCategory.getId());
-//   goTo(path);
-//   assertThat((pageSource()).contains("Household") == false);
-//
-// }
-// @Test
-// public void taskIsDeletedTest() {
-//   goTo("http://localhost:4567/");
-//   Category myCategory = new Category("Household");
-//   myCategory.save();
-//   String categoryPath = String.format("http://localhost:4567/%d", myCategory.getId());
-//   goTo(categoryPath);
-//   assertThat(pageSource()).contains("Household");
-//   Task tasks = new Task("Mow the lawn", myCategory.getId());
-//   tasks.save();
-//   goTo(categoryPath);
-//   assertThat(pageSource()).contains("Mow the lawn");
-//   tasks.delete(tasks.getId());
-//   goTo(categoryPath);
-//   assertThat((pageSource()).contains("Mow the lawn") == false);
-// }
+  @Test
+  public void stylistIsCreatedTest() {
+    goTo("http://localhost:4567/");
+    fill("#stylistName").with("Stylist 1");
+    submit(".btn-primary");
+    assertThat(pageSource()).contains("Stylist 1");
+  }
+
+  @Test
+  public void clientIsCreatedTest() {
+    goTo("http://localhost:4567/");
+    Stylist myStylist = new Stylist("Stylist 1");
+    myStylist.save();
+    String stylistPath = String.format("http://localhost:4567/%d", myStylist.getId());
+    goTo(stylistPath);
+    assertThat(pageSource()).contains("Stylist 1");
+    Client clients = new Client("Client 1", myStylist.getId());
+    clients.save();
+    goTo(stylistPath);
+    assertThat(pageSource()).contains("Client 1");
+  }
+
+  @Test
+  public void stylistIsDeletedTest() {
+    String path = "http://localhost:4567/";
+    goTo(path);
+    Stylist myStylist = new Stylist("Stylist 1");
+    myStylist.save();
+    goTo(path);
+    myStylist.deleteStylist(myStylist.getId());
+    goTo(path);
+    assertThat((pageSource()).contains("Stylist 1") == false);
+  }
+
+  @Test
+  public void clientIsDeletedTest() {
+    goTo("http://localhost:4567/");
+    Stylist myStylist = new Stylist("Stylist 1");
+    myStylist.save();
+    String stylistPath = String.format("http://localhost:4567/%d", myStylist.getId());
+    goTo(stylistPath);
+    assertThat(pageSource()).contains("Stylist 1");
+    Client clients = new Client("Client 1", myStylist.getId());
+    clients.save();
+    goTo(stylistPath);
+    assertThat(pageSource()).contains("Client 1");
+    clients.delete(clients.getId());
+    goTo(stylistPath);
+    assertThat((pageSource()).contains("Client 1") == false);
+  }
 }

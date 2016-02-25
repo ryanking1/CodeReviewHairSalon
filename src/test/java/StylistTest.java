@@ -2,48 +2,47 @@ import org.junit.*;
 import static org.junit.Assert.*;
 import java.util.Arrays;
 
-public class CategoryTest {
+public class StylistTest {
 
   @Rule
   public DatabaseRule database = new DatabaseRule();
 
-  // @Test
-  // public void all_emptyAtFirst() {
-  //   assertEquals(Category.all().size(), 0);
-  // }
-  //
-  // @Test
-  // public void equals_returnsTrueIfNamesAretheSame() {
-  //   Category firstCategory = new Category("Household chores");
-  //   Category secondCategory = new Category("Household chores");
-  //   assertTrue(firstCategory.equals(secondCategory));
-  // }
-  // 
-  // @Test
-  // public void save_savesIntoDatabase_true() {
-  //   Category myCategory = new Category("Household chores");
-  //   myCategory.save();
-  //   assertTrue(Category.all().get(0).equals(myCategory));
-  // }
-  //
-  // @Test
-  // public void find_findCategoryInDatabase_true() {
-  //   Category myCategory = new Category("Household chores");
-  //   myCategory.save();
-  //   Category savedCategory = Category.find(myCategory.getId());
-  //   assertTrue(myCategory.equals(savedCategory));
-  // }
-  //
-  // @Test
-  //   public void getTasks_retrievesALlTasksFromDatabase_tasksList() {
-  //     Category myCategory = new Category("Household chores");
-  //     myCategory.save();
-  //     Task firstTask = new Task("Mow the lawn", myCategory.getId());
-  //     firstTask.save();
-  //     Task secondTask = new Task("Do the dishes", myCategory.getId());
-  //     secondTask.save();
-  //     Task[] tasks = new Task[] { firstTask, secondTask };
-  //     assertTrue(myCategory.getTasks().containsAll(Arrays.asList(tasks)));
-  // }
+  @Test
+  public void all_emptyAtFirst() {
+    assertEquals(Stylist.all().size(), 0);
+  }
 
+  @Test
+  public void equals_returnsTrueIfNamesAretheSame() {
+    Stylist firstStylist = new Stylist("Stylist 1");
+    Stylist secondStylist = new Stylist("Stylist 1");
+    assertTrue(firstStylist.equals(secondStylist));
+  }
+
+  @Test
+  public void save_savesIntoDatabase_true() {
+    Stylist myStylist = new Stylist("Stylist 1");
+    myStylist.save();
+    assertTrue(Stylist.all().get(0).equals(myStylist));
+  }
+
+  @Test
+  public void find_findStylistInDatabase_true() {
+    Stylist myStylist = new Stylist("Stylist 1");
+    myStylist.save();
+    Stylist savedStylist = Stylist.find(myStylist.getId());
+    assertTrue(myStylist.equals(savedStylist));
+  }
+
+  @Test
+  public void getClients_retrievesALlClientsFromDatabase_clients() {
+    Stylist myStylist = new Stylist("Stylist 1");
+    myStylist.save();
+    Client firstClient = new Client("Client 1", myStylist.getId());
+    firstClient.save();
+    Client secondClient = new Client("Client 2", myStylist.getId());
+    secondClient.save();
+    Client[] clients = new Client[] { firstClient, secondClient };
+    assertTrue(myStylist.getClients().containsAll(Arrays.asList(clients)));
+  }
 }

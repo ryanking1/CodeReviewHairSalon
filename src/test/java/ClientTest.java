@@ -1,69 +1,69 @@
 import org.junit.*;
 import static org.junit.Assert.*;
 
-public class TaskTest {
+public class ClientTest {
 
   @Rule
   public DatabaseRule database = new DatabaseRule();
 
   @Test
   public void all_emptyAtFirst() {
-    assertEquals(Task.all().size(), 0);
+    assertEquals(Client.all().size(), 0);
   }
 
-  // @Test
-  // public void equals_returnsTrueIfDescriptionsAretheSame() {
-  //   Task firstTask = new Task("Mow the lawn", 1);
-  //   Task secondTask = new Task("Mow the lawn", 1);
-  //   assertTrue(firstTask.equals(secondTask));
-  // }
-  //
-  // @Test
-  // public void save_returnsTrueIfDescriptionsAretheSame() {
-  //   Task myTask = new Task("Mow the lawn", 1);
-  //   myTask.save();
-  //   assertTrue(Task.all().get(0).equals(myTask));
-  // }
-  //
-  // @Test
-  // public void save_assignsIdToObject() {
-  //   Task myTask = new Task("Mow the lawn", 1);
-  //   myTask.save();
-  //   Task savedTask = Task.all().get(0);
-  //   assertEquals(myTask.getId(), savedTask.getId());
-  // }
-  //
-  // @Test
-  // public void find_findsTaskInDatabase_true() {
-  //   Task myTask = new Task("Mow the lawn", 5);
-  //   myTask.save();
-  //   Task savedTask = Task.find(myTask.getId());
-  //   assertTrue(myTask.equals(savedTask));
-  // }
-  //
-  // @Test
-  // public void all_savesIntoDatabase_true() {
-  //   Task myTask = new Task("Mow the lawn", 1);
-  //   myTask.save();
-  //   assertEquals(Task.all().get(0).getDescription(), "Mow the lawn");
-  // }
-  //
-  // @Test
-  // public void find_findsAnotherTaskInDatabase_true() {
-  //   Task myTask = new Task("Mow the lawn", 1);
-  //   myTask.save();
-  //   Task savedTask = Task.find(myTask.getId());
-  //   assertEquals(savedTask.getDescription(), "Mow the lawn");
-  // }
-  //
-  // @Test
-  // public void save_savesCategoryIdIntoDB_true() {
-  //   Category myCategory = new Category("Household chores");
-  //   myCategory.save();
-  //   Task myTask = new Task("Mow the lawn", myCategory.getId());
-  //   myTask.save();
-  //   Task savedTask = Task.find(myTask.getId());
-  //   assertEquals(savedTask.getCategoryId(), myCategory.getId());
-  // }
+  @Test
+  public void equals_returnsTrueIfNamesAretheSame() {
+    Client firstClient = new Client("Client 1", 1);
+    Client secondClient = new Client("Client 1", 1);
+    assertTrue(firstClient.equals(secondClient));
+  }
+
+  @Test
+  public void save_returnsTrueIfNamesAretheSame() {
+    Client myClient = new Client("Client 1", 1);
+    myClient.save();
+    assertTrue(Client.all().get(0).equals(myClient));
+  }
+
+  @Test
+  public void save_assignsIdToObject() {
+    Client myClient = new Client("Client 1", 1);
+    myClient.save();
+    Client savedClient = Client.all().get(0);
+    assertEquals(myClient.getId(), savedClient.getId());
+  }
+
+  @Test
+  public void find_findsClientInDatabase_true() {
+    Client myClient = new Client("Client 11", 7);
+    myClient.save();
+    Client savedClient = Client.find(myClient.getId());
+    assertTrue(myClient.equals(savedClient));
+  }
+
+  @Test
+  public void all_savesIntoDatabase_true() {
+    Client myClient = new Client("CLient 1", 1);
+    myClient.save();
+    assertEquals(Client.all().get(0).getName(), "Client 1");
+  }
+
+  @Test
+  public void find_findsAnotherClientInDatabase_true() {
+    Client myClient = new Client("Client 1", 1);
+    myClient.save();
+    Client savedClient = Client.find(myClient.getId());
+    assertEquals(savedClient.getName(), "Client 1");
+  }
+
+  @Test
+  public void save_savesStylistIdIntoDB_true() {
+    Stylist myStylist = new Stylist("Stylist 1");
+    myStylist.save();
+    Client myClient = new Client("Client 1", myStylist.getId());
+    myClient.save();
+    Client savedClient = Client.find(myClient.getId());
+    assertEquals(savedClient.getStylistId(), myStylist.getId());
+  }
 
 }
