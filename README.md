@@ -2,7 +2,7 @@
 
 #### Creates an app that allows adding stylists and clients, and creating linked lists between the two, February 26, 2016.
 
-#### By Michael Schennum
+#### By Ryan King
 
 ## Description
 
@@ -12,7 +12,12 @@ This was created as an Epicodus exercise in Behavior Driven Development, web app
 
 * Clone this repository.
 * Make sure you have Gradle and Java installed.
-* Start Psql and Postgres and connect to a database.
+* Start Psql and Postgres
+* in PSQL:
+* CREATE DATABASE hair_salon;
+* Connect to database by using \c command: \c hair_salon;
+* CREATE TABLE stylists (id serial PRIMARY KEY, name varchar);
+* CREATE TABLE clients (id serial PRIMARY KEY, stylistid int, name varchar);
 * In the top level of the cloned directory, run the following command in your terminal:
 
 `gradle run`
